@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read JSON Data</title>
+</head>
+<body>
+
+<h1>JSON Data</h1>
+<pre id="jsonData"></pre>
+
+<script>
+  // Function to fetch and display JSON data
+  function fetchAndDisplayJsonData() {
+    fetch('data.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(jsonData => {
+        // Display JSON data in a <pre> element
+        document.getElementById('jsonData').textContent = JSON.stringify(jsonData, null, 2);
+      })
+      .catch(error => {
+        console.error('There was a problem fetching the JSON file:', error);
+      });
+  }
+
+  // Call the function to fetch and display JSON data
+  fetchAndDisplayJsonData();
+</script>
+
+</body>
+</html>
